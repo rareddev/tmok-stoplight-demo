@@ -199,7 +199,7 @@ paths:
       tags:
         - pet
       summary: Find pet by ID
-      description: Returns a single pet
+      description: Returns a single pet for the given ID
       operationId: getPetById
       parameters:
         - name: petId
