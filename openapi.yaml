@@ -703,6 +703,14 @@ components:
       xml:
         name: order
       type: object
+      x-examples:
+        Example Order:
+          id: 10
+          petId: 198772
+          quantity: 7
+          shipDate: '2019-08-24T14:15:22Z'
+          status: approved
+          complete: true
     Customer:
       properties:
         id:
@@ -722,6 +730,15 @@ components:
       xml:
         name: customer
       type: object
+      x-examples:
+        Example Customer:
+          id: 100000
+          username: fehguy
+          address:
+            - street: 437 Lytton
+              city: Palo Alto
+              state: CA
+              zip: 94301
     Address:
       properties:
         street:
@@ -739,6 +756,12 @@ components:
       xml:
         name: address
       type: object
+      x-examples:
+        Example Address:
+          street: 437 Lytton
+          city: Palo Alto
+          state: CA
+          zip: 94301
     Category:
       x-swagger-router-model: io.swagger.petstore.model.Category
       properties:
@@ -752,6 +775,10 @@ components:
       xml:
         name: category
       type: object
+      x-examples:
+        Dogs Example:
+          id: 1
+          name: Dogs
     User:
       x-swagger-router-model: io.swagger.petstore.model.User
       properties:
@@ -785,6 +812,16 @@ components:
       xml:
         name: user
       type: object
+      x-examples:
+        Example User:
+          id: 10
+          username: theUser
+          firstName: John
+          lastName: James
+          email: john@email.com
+          password: 12345
+          phone: 12345
+          userStatus: 1
     Tag:
       x-swagger-router-model: io.swagger.petstore.model.Tag
       properties:
@@ -839,6 +876,19 @@ components:
         name: pet
       type: object
       description: ''
+      x-examples:
+        Example Dog:
+          id: 10
+          name: doggie
+          category:
+            id: 1
+            name: Dogs
+          photoUrls:
+            - string
+          tags:
+            - id: 0
+              name: string
+          status: available
     ApiResponse:
       properties:
         code:
@@ -851,6 +901,7 @@ components:
       xml:
         name: '##default'
       type: object
+      x-examples: {}
   requestBodies:
     Pet:
       content:
