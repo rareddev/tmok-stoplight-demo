@@ -166,9 +166,6 @@ paths:
             type: array
             items:
               type: string
-        - schema:
-            type: string
-          in: header
       responses:
         '200':
           description: successful operation
@@ -250,8 +247,10 @@ paths:
                       - name
                   photoUrls:
                     type: array
+                    
                     items:
-                      required: []
+                      required:
+                        - photoUrl
                       properties: {}
                   tags:
                     type: array
@@ -291,7 +290,7 @@ paths:
       tags:
         - pet
       summary: Updates a pet in the store with form data
-      description: ''
+      description: 'TODO'
       operationId: updatePetWithForm
       parameters:
         - name: petId
@@ -314,6 +313,8 @@ paths:
       responses:
         '405':
           description: Invalid input
+        '200':
+          description: Valid request
       security:
         - petstore_auth:
             - 'write:pets'
@@ -322,7 +323,7 @@ paths:
       tags:
         - pet
       summary: Deletes a pet
-      description: ''
+      description: 'TODO'
       operationId: deletePet
       parameters:
         - name: api_key
@@ -341,6 +342,8 @@ paths:
       responses:
         '400':
           description: Invalid pet value
+        '200':
+          description: Valid pet value
       security:
         - petstore_auth:
             - 'write:pets'
@@ -351,7 +354,7 @@ paths:
       tags:
         - pet
       summary: uploads an image
-      description: ''
+      description: 'TODO'
       operationId: uploadFile
       parameters:
         - name: petId
@@ -478,6 +481,8 @@ paths:
             type: integer
             format: int64
       responses:
+        '200':
+          description: successful operation
         '400':
           description: Invalid ID supplied
         '404':
@@ -490,6 +495,8 @@ paths:
       description: This can only be done by the logged in user.
       operationId: createUser
       responses:
+        '200':
+          description: successful operation
         default:
           description: successful operation
           content:
@@ -543,7 +550,7 @@ paths:
       tags:
         - user
       summary: Logs user into the system
-      description: ''
+      description: 'TODO'
       operationId: loginUser
       parameters:
         - name: username
@@ -586,10 +593,12 @@ paths:
       tags:
         - user
       summary: Logs out current logged in user session
-      description: ''
+      description: 'TODO'
       operationId: logoutUser
       parameters: []
       responses:
+        '200':
+          description: successful operation
         default:
           description: successful operation
   '/user/{username}':
@@ -597,7 +606,7 @@ paths:
       tags:
         - user
       summary: Get user by user name
-      description: ''
+      description: 'TODO'
       operationId: getUserByName
       parameters:
         - name: username
@@ -635,6 +644,8 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
         default:
           description: successful operation
       requestBody:
@@ -663,6 +674,8 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: successful operation
         '400':
           description: Invalid username supplied
         '404':
@@ -752,7 +765,7 @@ components:
           example: CA
         zip:
           type: string
-          example: 94301
+          example: '94301'
       xml:
         name: address
       type: object
@@ -761,7 +774,7 @@ components:
           street: 437 Lytton
           city: Palo Alto
           state: CA
-          zip: 94301
+          zip: '94301'
     Category:
       x-swagger-router-model: io.swagger.petstore.model.Category
       properties:
@@ -800,10 +813,10 @@ components:
           example: john@email.com
         password:
           type: string
-          example: 12345
+          example: '12345'
         phone:
           type: string
-          example: 12345
+          example: '12345'
         userStatus:
           type: integer
           format: int32
@@ -861,10 +874,9 @@ components:
           type: array
           xml:
             wrapped: true
+            name: tag
           items:
             $ref: '#/components/schemas/Tag'
-            xml:
-              name: tag
         status:
           type: string
           description: pet status in the store
